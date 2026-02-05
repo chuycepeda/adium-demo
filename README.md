@@ -14,14 +14,13 @@
 
 | # | Prompt | Type |
 |---|--------|------|
-| 1 | "can you build a web app where I can put these inputs and follow the script you just created?" | Build |
-| 2 | "can you restart the local server?" | Fix |
-| 3 | "tried it and shot a Error procesando la solicitud" | Fix |
-| 4 | *(provided API key)* | Fix |
-| 5 | "add the amount of time it took you to create this in the floating badge" | Enhancement |
-| 6 | "can you improve the markdown display in coach responses?" | Enhancement |
+| 1 | "I'm doing an AI crash-course to 250 people... from this company: adium.com.ec What could be a good quick experiment for them?" | Research |
+| 2 | "prepare a script for the objection handler demo" | Script |
+| 3 | "can you build a web app where I can put these inputs and follow the script you just created?" | Build |
+| 4 | "add the amount of time it took you to create this in the floating badge" | Enhancement |
+| 5 | "can you improve the markdown display in coach responses?" | Enhancement |
 
-**Total: 6 prompts** — 1 to build, 3 to fix, 2 to enhance.
+**Total: 8 prompts** — 1 research, 1 script, 1 build, 3 fixes, 2 enhancements.
 
 ---
 
