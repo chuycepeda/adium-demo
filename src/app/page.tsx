@@ -1,6 +1,42 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useMemo } from "react";
+
+function formatMarkdown(text: string): React.ReactNode[] {
+  const lines = text.split("\n");
+  const elements: React.ReactNode[] = [];
+
+  lines.forEach((line, i) => {
+    let content: React.ReactNode = line;
+
+    // Convert ### and ## headers to bold
+    if (line.startsWith("### ")) {
+      content = <strong key={i} className="text-cyan-300">{line.slice(4)}</strong>;
+    } else if (line.startsWith("## ")) {
+      content = <strong key={i} className="text-cyan-300">{line.slice(3)}</strong>;
+    } else if (line.startsWith("# ")) {
+      content = <strong key={i} className="text-cyan-300 text-lg">{line.slice(2)}</strong>;
+    } else {
+      // Convert **bold** to <strong>
+      const parts = line.split(/(\*\*[^*]+\*\*)/g);
+      content = parts.map((part, j) => {
+        if (part.startsWith("**") && part.endsWith("**")) {
+          return <strong key={j} className="text-white">{part.slice(2, -2)}</strong>;
+        }
+        return part;
+      });
+    }
+
+    elements.push(
+      <span key={i}>
+        {content}
+        {i < lines.length - 1 && <br />}
+      </span>
+    );
+  });
+
+  return elements;
+}
 
 const PRESET_OBJECTIONS = [
   "Su producto es muy caro, el genérico funciona igual",
@@ -37,6 +73,11 @@ export default function Home() {
   const [mode, setMode] = useState<Mode>("objection");
   const [response, setResponse] = useState("");
   const [loading, setLoading] = useState(false);
+
+  const formattedResponse = useMemo(() => {
+    if (!response) return null;
+    return formatMarkdown(response);
+  }, [response]);
 
   const handleSubmit = async () => {
     if (!objection.trim()) return;
@@ -287,10 +328,10 @@ export default function Home() {
               </h2>
             </div>
 
-            {response ? (
+            {formattedResponse ? (
               <div className="prose prose-invert max-w-none">
-                <div className="text-white/90 leading-relaxed whitespace-pre-wrap">
-                  {response}
+                <div className="text-white/90 leading-relaxed">
+                  {formattedResponse}
                 </div>
               </div>
             ) : (
