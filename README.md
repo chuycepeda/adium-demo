@@ -20,7 +20,7 @@
 | 4 | "add the amount of time it took you to create this in the floating badge" | Enhancement |
 | 5 | "can you improve the markdown display in coach responses?" | Enhancement |
 
-**Total: 8 prompts** — 1 research, 1 script, 1 build, 3 fixes, 2 enhancements.
+**Total: 5 prompts** — 1 research, 1 script, 1 build, 2 enhancements.
 
 ---
 
