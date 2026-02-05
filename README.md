@@ -10,6 +10,19 @@
 >
 > Total time: **~7 minutes** (including research, planning, and coding)
 
+### Prompts Used to Build This
+
+| # | Prompt | Type |
+|---|--------|------|
+| 1 | "can you build a web app where I can put these inputs and follow the script you just created?" | Build |
+| 2 | "can you restart the local server?" | Fix |
+| 3 | "tried it and shot a Error procesando la solicitud" | Fix |
+| 4 | *(provided API key)* | Fix |
+| 5 | "add the amount of time it took you to create this in the floating badge" | Enhancement |
+| 6 | "can you improve the markdown display in coach responses?" | Enhancement |
+
+**Total: 6 prompts** — 1 to build, 3 to fix, 2 to enhance.
+
 ---
 
 ## What This Is
