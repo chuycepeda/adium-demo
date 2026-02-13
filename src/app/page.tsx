@@ -11,17 +11,17 @@ function formatMarkdown(text: string): React.ReactNode[] {
 
     // Convert ### and ## headers to bold
     if (line.startsWith("### ")) {
-      content = <strong key={i} className="text-cyan-300">{line.slice(4)}</strong>;
+      content = <strong key={i} className="text-red-600">{line.slice(4)}</strong>;
     } else if (line.startsWith("## ")) {
-      content = <strong key={i} className="text-cyan-300">{line.slice(3)}</strong>;
+      content = <strong key={i} className="text-red-600">{line.slice(3)}</strong>;
     } else if (line.startsWith("# ")) {
-      content = <strong key={i} className="text-cyan-300 text-lg">{line.slice(2)}</strong>;
+      content = <strong key={i} className="text-red-600 text-lg">{line.slice(2)}</strong>;
     } else {
       // Convert **bold** to <strong>
       const parts = line.split(/(\*\*[^*]+\*\*)/g);
       content = parts.map((part, j) => {
         if (part.startsWith("**") && part.endsWith("**")) {
-          return <strong key={j} className="text-white">{part.slice(2, -2)}</strong>;
+          return <strong key={j} className="text-gray-900">{part.slice(2, -2)}</strong>;
         }
         return part;
       });
@@ -106,38 +106,29 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900">
+    <div className="min-h-screen bg-gray-50">
       {/* Header */}
-      <header className="border-b border-white/10 bg-black/20 backdrop-blur-sm">
+      <header className="border-b border-gray-200 bg-white shadow-sm">
         <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-400 to-blue-500 flex items-center justify-center">
-              <svg
-                className="w-6 h-6 text-white"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
-                />
-              </svg>
-            </div>
-            <div>
-              <h1 className="text-xl font-bold text-white">
-                Coach de Ventas IA
-              </h1>
-              <p className="text-xs text-cyan-300/70">
-                Powered by Claude
-              </p>
+            {/* Adium Logo Style */}
+            <div className="flex items-center gap-2">
+              <div className="w-10 h-10 rounded-full bg-red-600 flex items-center justify-center">
+                <span className="text-white font-bold text-lg">A</span>
+              </div>
+              <div>
+                <h1 className="text-xl font-bold text-gray-900">
+                  Coach de Ventas IA
+                </h1>
+                <p className="text-xs text-red-600 font-medium">
+                  Powered by Claude
+                </p>
+              </div>
             </div>
           </div>
           <div className="text-right">
-            <p className="text-sm text-white/60">Demo para</p>
-            <p className="text-lg font-semibold text-white">Adium Ecuador</p>
+            <p className="text-2xl font-bold text-red-600 tracking-wide">adium</p>
+            <p className="text-xs text-gray-500">Ecuador</p>
           </div>
         </div>
       </header>
@@ -161,10 +152,10 @@ export default function Home() {
                 setObjection("");
                 setResponse("");
               }}
-              className={`px-5 py-3 rounded-xl font-medium transition-all ${
+              className={`px-5 py-3 rounded-lg font-medium transition-all ${
                 mode === tab.id
-                  ? "bg-cyan-500 text-white shadow-lg shadow-cyan-500/30"
-                  : "bg-white/5 text-white/70 hover:bg-white/10"
+                  ? "bg-red-600 text-white shadow-lg shadow-red-600/20"
+                  : "bg-white text-gray-600 hover:bg-gray-100 border border-gray-200"
               }`}
             >
               <span className="mr-2">{tab.icon}</span>
@@ -180,40 +171,32 @@ export default function Home() {
             {mode === "objection" && (
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-cyan-300 mb-2">
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
                     Especialidad del Médico
                   </label>
                   <select
                     value={specialty}
                     onChange={(e) => setSpecialty(e.target.value)}
-                    className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent"
+                    className="w-full px-4 py-3 rounded-lg bg-white border border-gray-300 text-gray-900 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent"
                   >
                     {SPECIALTIES.map((s) => (
-                      <option
-                        key={s.value}
-                        value={s.value}
-                        className="bg-slate-800"
-                      >
+                      <option key={s.value} value={s.value}>
                         {s.label}
                       </option>
                     ))}
                   </select>
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-cyan-300 mb-2">
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
                     Lugar de Atención
                   </label>
                   <select
                     value={setting}
                     onChange={(e) => setSetting(e.target.value)}
-                    className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent"
+                    className="w-full px-4 py-3 rounded-lg bg-white border border-gray-300 text-gray-900 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent"
                   >
                     {SETTINGS.map((s) => (
-                      <option
-                        key={s.value}
-                        value={s.value}
-                        className="bg-slate-800"
-                      >
+                      <option key={s.value} value={s.value}>
                         {s.label}
                       </option>
                     ))}
@@ -224,7 +207,7 @@ export default function Home() {
 
             {/* Main Input */}
             <div>
-              <label className="block text-sm font-medium text-cyan-300 mb-2">
+              <label className="block text-sm font-medium text-gray-700 mb-2">
                 {mode === "objection" && "¿Qué dijo el médico?"}
                 {mode === "email" && "Describe la situación para el email"}
                 {mode === "preparation" && "¿A quién visitarás?"}
@@ -240,14 +223,14 @@ export default function Home() {
                       : "Ej: Oncólogo en hospital privado, nunca ha recetado nuestros productos..."
                 }
                 rows={4}
-                className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-white/30 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-transparent resize-none"
+                className="w-full px-4 py-3 rounded-lg bg-white border border-gray-300 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent resize-none"
               />
             </div>
 
             {/* Preset Objections (only for objection mode) */}
             {mode === "objection" && (
               <div>
-                <p className="text-sm text-white/50 mb-3">
+                <p className="text-sm text-gray-500 mb-3">
                   O selecciona una objeción común:
                 </p>
                 <div className="flex flex-wrap gap-2">
@@ -255,7 +238,7 @@ export default function Home() {
                     <button
                       key={i}
                       onClick={() => handlePresetClick(preset)}
-                      className="px-3 py-2 text-sm rounded-lg bg-white/5 text-white/70 hover:bg-white/10 hover:text-white transition-all border border-white/5"
+                      className="px-3 py-2 text-sm rounded-lg bg-white text-gray-600 hover:bg-red-50 hover:text-red-700 hover:border-red-200 transition-all border border-gray-200"
                     >
                       {preset.length > 40
                         ? preset.substring(0, 40) + "..."
@@ -270,7 +253,7 @@ export default function Home() {
             <button
               onClick={handleSubmit}
               disabled={loading || !objection.trim()}
-              className="w-full py-4 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-semibold text-lg shadow-lg shadow-cyan-500/30 hover:shadow-cyan-500/50 transition-all disabled:opacity-50 disabled:cursor-not-allowed disabled:shadow-none"
+              className="w-full py-4 rounded-lg bg-red-600 hover:bg-red-700 text-white font-semibold text-lg shadow-lg shadow-red-600/20 hover:shadow-red-600/30 transition-all disabled:opacity-50 disabled:cursor-not-allowed disabled:shadow-none"
             >
               {loading ? (
                 <span className="flex items-center justify-center gap-2">
@@ -306,9 +289,9 @@ export default function Home() {
           </div>
 
           {/* Response Panel */}
-          <div className="bg-white/5 rounded-2xl border border-white/10 p-6 min-h-[400px]">
+          <div className="bg-white rounded-2xl border border-gray-200 p-6 min-h-[400px] shadow-sm">
             <div className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-cyan-400 to-blue-500 flex items-center justify-center">
+              <div className="w-8 h-8 rounded-lg bg-red-600 flex items-center justify-center">
                 <svg
                   className="w-4 h-4 text-white"
                   fill="none"
@@ -323,19 +306,19 @@ export default function Home() {
                   />
                 </svg>
               </div>
-              <h2 className="text-lg font-semibold text-white">
+              <h2 className="text-lg font-semibold text-gray-900">
                 Respuesta del Coach
               </h2>
             </div>
 
             {formattedResponse ? (
-              <div className="prose prose-invert max-w-none">
-                <div className="text-white/90 leading-relaxed">
+              <div className="prose max-w-none">
+                <div className="text-gray-700 leading-relaxed">
                   {formattedResponse}
                 </div>
               </div>
             ) : (
-              <div className="h-full flex items-center justify-center text-white/30">
+              <div className="h-full flex items-center justify-center text-gray-400">
                 <div className="text-center">
                   <svg
                     className="w-16 h-16 mx-auto mb-4 opacity-50"
@@ -361,13 +344,13 @@ export default function Home() {
         </div>
 
         {/* Footer Tips */}
-        <div className="mt-12 p-6 bg-white/5 rounded-2xl border border-white/10">
-          <h3 className="text-lg font-semibold text-cyan-300 mb-4">
+        <div className="mt-12 p-6 bg-white rounded-2xl border border-gray-200 shadow-sm">
+          <h3 className="text-lg font-semibold text-red-600 mb-4">
             Tips para el Demo
           </h3>
-          <div className="grid md:grid-cols-3 gap-6 text-sm text-white/70">
+          <div className="grid md:grid-cols-3 gap-6 text-sm text-gray-600">
             <div>
-              <p className="font-medium text-white mb-1">
+              <p className="font-medium text-gray-900 mb-1">
                 Cambia el contexto
               </p>
               <p>
@@ -376,7 +359,7 @@ export default function Home() {
               </p>
             </div>
             <div>
-              <p className="font-medium text-white mb-1">
+              <p className="font-medium text-gray-900 mb-1">
                 Usa objeciones reales
               </p>
               <p>
@@ -385,7 +368,7 @@ export default function Home() {
               </p>
             </div>
             <div>
-              <p className="font-medium text-white mb-1">
+              <p className="font-medium text-gray-900 mb-1">
                 No es un reemplazo
               </p>
               <p>
@@ -399,10 +382,10 @@ export default function Home() {
 
       {/* Built with badge */}
       <footer className="fixed bottom-4 right-4">
-        <div className="px-4 py-2 rounded-full bg-black/40 backdrop-blur-sm border border-white/10 text-sm text-white/50">
+        <div className="px-4 py-2 rounded-full bg-white/90 backdrop-blur-sm border border-gray-200 text-sm text-gray-500 shadow-lg">
           Built with{" "}
-          <span className="text-cyan-400 font-medium">Claude Code</span> in
-          <span className="text-white font-semibold"> ~7 min</span>
+          <span className="text-red-600 font-medium">Claude Code</span> in
+          <span className="text-gray-900 font-semibold"> ~7 min</span>
         </div>
       </footer>
     </div>
