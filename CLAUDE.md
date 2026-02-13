@@ -27,10 +27,16 @@ Demo app for Adium Ecuador's AI crash course (250 non-technical sales reps). Sho
 - Vercel: https://adium-demo.vercel.app
 - Deploy: `npx vercel --prod --yes`
 
+## Branding
+- Colors: Red accent (#dc2626), white/gray backgrounds
+- Clean pharmaceutical look matching adium.com.ec
+- Logo "adium" in header with red styling
+
 ## Build History
-Built in ~7 minutes with 5 prompts:
+Built with 6 prompts:
 1. Research — analyze adium.com.ec
 2. Script — create presenter demo script
 3. Build — create the web app
 4. Enhancement — add build time to badge
 5. Enhancement — improve markdown rendering
+6. Branding — apply Adium brand colors and style

@@ -19,8 +19,9 @@
 | 3 | "¿puedes construir una app web donde pueda poner estos inputs y seguir el guión que creaste?" | Construcción |
 | 4 | "agrega el tiempo que te tomó crear esto en el badge flotante" | Mejora |
 | 5 | "¿puedes mejorar cómo se muestra el markdown en las respuestas del coach?" | Mejora |
+| 6 | "puedes ponerle a nuestro coach de ventas el branding de la marca adium" | Branding |
 
-**Total: 5 prompts** — 1 investigación, 1 guión, 1 construcción, 2 mejoras.
+**Total: 6 prompts** — 1 investigación, 1 guión, 1 construcción, 2 mejoras, 1 branding.
 
 ---
 

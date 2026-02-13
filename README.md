@@ -19,8 +19,9 @@
 | 3 | "can you build a web app where I can put these inputs and follow the script you just created?" | Build |
 | 4 | "add the amount of time it took you to create this in the floating badge" | Enhancement |
 | 5 | "can you improve the markdown display in coach responses?" | Enhancement |
+| 6 | "puedes ponerle a nuestro coach de ventas el branding de la marca adium" | Branding |
 
-**Total: 5 prompts** — 1 research, 1 script, 1 build, 2 enhancements.
+**Total: 6 prompts** — 1 research, 1 script, 1 build, 2 enhancements, 1 branding.
 
 ---
 
